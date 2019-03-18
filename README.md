@@ -22,3 +22,5 @@ wget -O uxp.tgz https://github.com/MoonchildProductions/UXP/archive/master.tar.g
 ./chroot-mach.sh rootfs build
 ./chroot-mach.sh rootfs package
 ```
+
+Your binaries are now in `rootfs/root/pmbuild/dist`.

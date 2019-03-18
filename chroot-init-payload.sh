@@ -25,7 +25,7 @@ apt update
 apt install -y --no-install-recommends $HOST_PACKAGES
 apt install -y --no-install-recommends $TARGET_PACKAGES
 
-tar -C /root -xzf /uxp.tgz
+[ ! -d /root/UXP-master ] && tar -C /root -xzf /uxp.tgz
 if [ "$TARGET_ARCH" != "amd64" ] && [ "$TARGET_ARCH" != "i386" ] && [ "0$NO_MONKEY_PATCHING" -eq 0 ]; then
 	sed -i 's/-msse2 -mfpmath=sse//g' /root/UXP-master/build/autoconf/compiler-opts.m4
 if [ "$TARGET_ARCH" = "armhf" ]; then
@@ -39,7 +39,7 @@ varsubst.sh "TARGET_ARCH TARGET_TRIPLE NO_MONKEY_PATCHING" < /mozconfig.tpl > /m
 if test $TARGET_ARCH_NATIVE; then
 	grep -vE '^CROSS' /mozconfig > /root/UXP-master/.mozconfig
 else
-	sed 's/^CROSS.*//g' /mozconfig > /root/UXP-master/.mozconfig
+	sed 's/^CROSS? //g' /mozconfig > /root/UXP-master/.mozconfig
 fi
 
 echo Configured chroot.
