@@ -18,6 +18,7 @@ ac_add_options --enable-default-toolkit=cairo-gtk2
 ac_add_options --enable-jemalloc
 ac_add_options --enable-strip
 ac_add_options --with-pthreads
+#ac_add_options --enable-debug-symbols
  
 ac_add_options --disable-tests
 ac_add_options --disable-eme

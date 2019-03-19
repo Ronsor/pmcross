@@ -30,6 +30,7 @@ DIR="$1"
 
 [ ! -f $DIR/bin/bash ] && { debootstrap --arch $HOST_ARCH $DEBIAN_SUITE $DIR || exit 1; }
 
+cp /proc/cpuinfo /proc/meminfo $DIR/proc
 cp chroot-init-payload.sh $DIR || exit 1
 cp varsubst.sh $DIR || exit 1
 cp $MOZCONFIG $DIR || exit 1
